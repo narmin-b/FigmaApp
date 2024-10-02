@@ -14,7 +14,10 @@
 		114840922CAB2A1F00282DC4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 114840912CAB2A1F00282DC4 /* Assets.xcassets */; };
 		114840952CAB2A1F00282DC4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 114840942CAB2A1F00282DC4 /* Base */; };
 		1148409D2CAB2C4900282DC4 /* ELEPHNT.TTF in Resources */ = {isa = PBXBuildFile; fileRef = 1148409C2CAB2C4900282DC4 /* ELEPHNT.TTF */; };
+		117449652CAC4F15001E1EB6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117449642CAC4F15001E1EB6 /* SecondViewController.swift */; };
 		118069C52CAB3782002B761E /* Inter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 118069C42CAB3782002B761E /* Inter.ttc */; };
+		119877072CAC57970040D8E9 /* RedHatDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */; };
+		119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119877082CAC82AF0040D8E9 /* ThirdViewController.swift */; };
 		11D0E1852CAB343A0033DAEA /* engravers-mt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +31,10 @@
 		114840942CAB2A1F00282DC4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		114840962CAB2A1F00282DC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1148409C2CAB2C4900282DC4 /* ELEPHNT.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = ELEPHNT.TTF; sourceTree = "<group>"; };
+		117449642CAC4F15001E1EB6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		118069C42CAB3782002B761E /* Inter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttc; sourceTree = "<group>"; };
+		119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.ttf"; sourceTree = "<group>"; };
+		119877082CAC82AF0040D8E9 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "engravers-mt.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -49,6 +55,7 @@
 				1148409C2CAB2C4900282DC4 /* ELEPHNT.TTF */,
 				11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */,
 				118069C42CAB3782002B761E /* Inter.ttc */,
+				119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */,
 				114840872CAB2A1D00282DC4 /* FigmaApp */,
 				114840862CAB2A1D00282DC4 /* Products */,
 			);
@@ -68,6 +75,8 @@
 				114840882CAB2A1D00282DC4 /* AppDelegate.swift */,
 				1148408A2CAB2A1D00282DC4 /* SceneDelegate.swift */,
 				1148408C2CAB2A1D00282DC4 /* ViewController.swift */,
+				117449642CAC4F15001E1EB6 /* SecondViewController.swift */,
+				119877082CAC82AF0040D8E9 /* ThirdViewController.swift */,
 				1148408E2CAB2A1D00282DC4 /* Main.storyboard */,
 				114840912CAB2A1F00282DC4 /* Assets.xcassets */,
 				114840932CAB2A1F00282DC4 /* LaunchScreen.storyboard */,
@@ -138,6 +147,7 @@
 				114840922CAB2A1F00282DC4 /* Assets.xcassets in Resources */,
 				11D0E1852CAB343A0033DAEA /* engravers-mt.ttf in Resources */,
 				114840952CAB2A1F00282DC4 /* Base in Resources */,
+				119877072CAC57970040D8E9 /* RedHatDisplay-Regular.ttf in Resources */,
 				114840902CAB2A1D00282DC4 /* Base in Resources */,
 				1148409D2CAB2C4900282DC4 /* ELEPHNT.TTF in Resources */,
 			);
@@ -150,7 +160,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				117449652CAC4F15001E1EB6 /* SecondViewController.swift in Sources */,
 				1148408D2CAB2A1D00282DC4 /* ViewController.swift in Sources */,
+				119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */,
 				114840892CAB2A1D00282DC4 /* AppDelegate.swift in Sources */,
 				1148408B2CAB2A1D00282DC4 /* SceneDelegate.swift in Sources */,
 			);
@@ -312,6 +324,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -344,6 +357,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

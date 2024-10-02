@@ -4,6 +4,7 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
+		<string>RedHatDisplay-Regular.ttf</string>
 		<string>Inter.ttc</string>
 		<string>ELEPHNT.TTF</string>
 		<string>engravers-mt.ttf</string>
