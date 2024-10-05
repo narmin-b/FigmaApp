@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SecondViewControllerDelegate: AnyObject {
+    func newUserAdded(newUser: User)
+}
+
 class SecondViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var bgView: UIView!
@@ -23,6 +27,9 @@ class SecondViewController: UIViewController, UITextViewDelegate {
 
     var iconClick = false
     let imageIcon = UIImageView()
+    var users: [User] = []
+    var callback: (([User]) -> Void)?
+    weak var delegate: SecondViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +47,25 @@ class SecondViewController: UIViewController, UITextViewDelegate {
             if URL.absoluteString == "loginAction" {
                 let loginVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
                 present(loginVC, animated: true)
+                //navigationController?.pushViewController(loginVC, animated: true)
             }
             return true
         }
     
     private func configureView() {
-        bgView.backgroundColor = UIColor(patternImage: UIImage(named: "Image") ?? UIImage()).withAlphaComponent(0.2)
+        let img = UIImageView(image: UIImage(named: "bg"))
+        img.alpha = 0.3
+        img.contentMode = .scaleAspectFill  // Centers the image in the UIImageView
+        img.translatesAutoresizingMaskIntoConstraints = false
+
+        bgView.addSubview(img)
+        
+        NSLayoutConstraint.activate([
+            img.centerXAnchor.constraint(equalTo: bgView.centerXAnchor),
+            img.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
+            img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
+            img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
+        ])
     }
     
     private func configureLabels() {
@@ -139,5 +159,40 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         loginTextView.font = UIFont(name: "Red Hat Display", size: 12)
                 
         loginTextView.delegate = self
+    }
+    
+}
+
+extension SecondViewController {
+    func setUserList(list: [User]) {
+        self.users = list
+    }
+    
+    func isEmailValid() -> Bool {
+        let email = emailTextField.text ?? ""
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPred.evaluate(with: email)
+    }
+    
+    func isPasswordValid() -> Bool {
+        return passwordTextField.text!.count >= 6
+    }
+    
+    func isfullNameValid() -> Bool {
+        let fullName = fullnameTextField.text ?? ""
+        let regex = "[A-Za-z]{2,}"
+        let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
+        return predicate.evaluate(with: fullName)
+    }
+    
+    @IBAction private func signupButtonClicked(_ sender: UIButton) {
+        if isEmailValid() && isfullNameValid() && isPasswordValid() {
+            let user = User(fullname: fullnameTextField.text, email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
+            delegate?.newUserAdded(newUser: user)
+            emailTextField.text = ""
+            passwordTextField.text = ""
+            fullnameTextField.text = ""
+        }
     }
 }

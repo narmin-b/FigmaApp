@@ -19,6 +19,7 @@
 		119877072CAC57970040D8E9 /* RedHatDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */; };
 		119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119877082CAC82AF0040D8E9 /* ThirdViewController.swift */; };
 		11D0E1852CAB343A0033DAEA /* engravers-mt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */; };
+		11EF00B62CAFDAB500F14F84 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF00B52CAFDAB500F14F84 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		119877082CAC82AF0040D8E9 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
 		11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "engravers-mt.ttf"; sourceTree = "<group>"; };
+		11EF00B52CAFDAB500F14F84 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				114840882CAB2A1D00282DC4 /* AppDelegate.swift */,
 				1148408A2CAB2A1D00282DC4 /* SceneDelegate.swift */,
+				11EF00B52CAFDAB500F14F84 /* UserInfo.swift */,
 				1148408C2CAB2A1D00282DC4 /* ViewController.swift */,
 				117449642CAC4F15001E1EB6 /* SecondViewController.swift */,
 				119877082CAC82AF0040D8E9 /* ThirdViewController.swift */,
@@ -164,6 +167,7 @@
 				1148408D2CAB2A1D00282DC4 /* ViewController.swift in Sources */,
 				119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */,
 				114840892CAB2A1D00282DC4 /* AppDelegate.swift in Sources */,
+				11EF00B62CAFDAB500F14F84 /* UserInfo.swift in Sources */,
 				1148408B2CAB2A1D00282DC4 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

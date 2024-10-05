@@ -7,7 +7,9 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController, UITextViewDelegate {
+class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewControllerDelegate {
+    
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var signupTextView: UITextView!
     @IBOutlet weak var loginButton: UIButton!
@@ -20,20 +22,39 @@ class ThirdViewController: UIViewController, UITextViewDelegate {
     
     var iconClick = false
     let imageIcon = UIImageView()
+    var users: [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //dump(users)
         configureView()
         configureLabels()
         configureEmailTextField()
         configurePasswordTextField()
         configureButton()
         configureTextButton()
+        
+        let registerController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
+        
+        registerController.delegate = self
+        registerController.setUserList(list: users)
     }
     
     private func configureView() {
-        bgView.backgroundColor = UIColor(patternImage: UIImage(named: "Image") ?? UIImage()).withAlphaComponent(0.2)
+        let img = UIImageView(image: UIImage(named: "bg"))
+        img.alpha = 0.3
+        img.contentMode = .scaleAspectFill  // Centers the image in the UIImageView
+        img.translatesAutoresizingMaskIntoConstraints = false
+
+        bgView.addSubview(img)
+        
+        NSLayoutConstraint.activate([
+            img.centerXAnchor.constraint(equalTo: bgView.centerXAnchor),
+            img.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
+            img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
+            img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
+        ])
     }
     
     private func configureLabels() {
@@ -50,7 +71,7 @@ class ThirdViewController: UIViewController, UITextViewDelegate {
         emailTextField.layer.cornerRadius = 7
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor(named: "black")?.cgColor
-    }
+    }s
     
     private func configureButton() {
         loginButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
@@ -123,10 +144,31 @@ class ThirdViewController: UIViewController, UITextViewDelegate {
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
             if URL.absoluteString == "loginAction" {
-                let loginVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
-                present(loginVC, animated: true)
+                let signupVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
+                present(signupVC, animated: true)
+                //navigationController?.popViewController(animated: true)
             }
             return true
         }
     
+}
+
+extension ThirdViewController {
+    func newUserAdded(newUser: User) {
+        users.append(newUser)
+        dump(users)
+    }
+    
+    func isUserValid() -> Bool {
+        if users.contains(where: {$0.email == emailTextField.text}) && users.contains(where: {$0.password == passwordTextField.text}) {
+            return true
+        }
+        return false
+    }
+    
+    @IBAction private func loginButtonClicked(_ sender: UIButton) {
+        if isUserValid() {
+            print("success")
+        }
+    }
 }

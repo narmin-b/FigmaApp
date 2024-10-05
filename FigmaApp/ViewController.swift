@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.titleView = nil
         configureView()
         configureLabels()
         configureButton()
@@ -30,7 +31,19 @@ class ViewController: UIViewController {
     }
     
     private func configureView() {
-        bgView.backgroundColor = UIColor(patternImage: UIImage(named: "Image") ?? UIImage()).withAlphaComponent(0.3)
+        let img = UIImageView(image: UIImage(named: "bg"))
+        img.alpha = 0.3
+        img.contentMode = .scaleAspectFill  // Centers the image in the UIImageView
+        img.translatesAutoresizingMaskIntoConstraints = false
+
+        bgView.addSubview(img)
+        
+        NSLayoutConstraint.activate([
+            img.centerXAnchor.constraint(equalTo: bgView.centerXAnchor),
+            img.centerYAnchor.constraint(equalTo: bgView.centerYAnchor),
+            img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
+            img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
+        ])
     }
     
     private func configureLabels() {
