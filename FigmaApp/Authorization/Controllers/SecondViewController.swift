@@ -8,11 +8,12 @@
 import UIKit
 
 protocol SecondViewControllerDelegate: AnyObject {
-    func newUserAdded(newUser: User)
+    func didFinish(user: User)
 }
 
-class SecondViewController: UIViewController, UITextViewDelegate {
 
+class SecondViewController: UIViewController, UITextViewDelegate {
+    
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var textLabel: UILabel!
     @IBOutlet weak var createLabel: UILabel!
@@ -23,16 +24,19 @@ class SecondViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var signupButton: UIButton!
-    @IBOutlet weak var loginTextView: UITextView!
-
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
     var iconClick = false
     let imageIcon = UIImageView()
-    var users: [User] = []
-    var callback: (([User]) -> Void)?
+    private var user: User?
     weak var delegate: SecondViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        
         configureView()
         configureLabels()
         configureFullnameTextField()
@@ -40,24 +44,16 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         configurePasswordTextField()
         configureButton()
         configureTextButton()
+        print(navigationController?.viewControllers)
+        
     }
-
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-            if URL.absoluteString == "loginAction" {
-                let loginVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
-                present(loginVC, animated: true)
-                //navigationController?.pushViewController(loginVC, animated: true)
-            }
-            return true
-        }
     
     private func configureView() {
         let img = UIImageView(image: UIImage(named: "bg"))
         img.alpha = 0.3
         img.contentMode = .scaleAspectFill  // Centers the image in the UIImageView
         img.translatesAutoresizingMaskIntoConstraints = false
-
+        
         bgView.addSubview(img)
         
         NSLayoutConstraint.activate([
@@ -118,7 +114,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         imageIcon.addGestureRecognizer(tapGestureRecognizer)
     }
     
-    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+    @objc fileprivate func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
         let tappedImage = tapGestureRecognizer.view as? UIImageView
         
         if iconClick {
@@ -138,61 +134,128 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
         signupButton.tintColor = .white
+        
+        signupButton.addTarget(self, action: #selector(signupButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc fileprivate func signupButtonTapped() {
+//        if isEmailValid() && isfullNameValid() && isPasswordValid() {
+//            let user = User(fullname: fullnameTextField.text, email: emailTextField.text!, password: passwordTextField.text!)
+//            emailTextField.text = ""
+//            passwordTextField.text = ""
+//            fullnameTextField.text = ""
+//            delegate?.didFinish(user: user)
+//            navigationController?.popViewController(animated: true)
+//        }
+        signUpButtonClicked()
     }
     
     private func configureTextButton() {
-        let fullText = "Already have an account? Login"
-        let attributedString = NSMutableAttributedString(string: fullText)
-                
-        let loginRange = (fullText as NSString).range(of: "Login")
-                
-        attributedString.addAttribute(.link, value: "loginAction", range: loginRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: loginRange)
-        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: loginRange)
-
-        loginTextView.attributedText = attributedString
-        loginTextView.isEditable = false
-        loginTextView.isScrollEnabled = false
-        loginTextView.textAlignment = .center
-        loginTextView.textColor = .black
-        loginTextView.backgroundColor = .clear
-        loginTextView.font = UIFont(name: "Red Hat Display", size: 12)
-                
-        loginTextView.delegate = self
+        loginLabel.text = "Already have an account?"
+        loginLabel.font = UIFont(name: "Red Hat Display", size: 12)
+        
+        loginButton.setTitle("Login", for: .normal)
+        loginButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 12)
+        loginButton.tintColor = .systemBlue
+        loginButton.titleLabel?.attributedText = NSAttributedString(string: "Login", attributes:
+                                                                        [.underlineStyle: NSUnderlineStyle.single.rawValue])
+        
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
+    @objc fileprivate func loginButtonTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    fileprivate func signUpButtonClicked() {
+        guard checkValidation() else {
+            print(#function, "fieldler bosh ola bilmez")
+            return
+        }
+        guard let name = fullnameTextField.text, let password = passwordTextField.text, let mail = emailTextField.text else {return}
+        user = User(fullname: name, email: mail, password: password)
+        guard let user = user else {return}
+        delegate?.didFinish(user: user)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    fileprivate func checkValidation() -> Bool {
+        guard let name = fullnameTextField.text, let password = passwordTextField.text, let mail = emailTextField.text else {return false}
+        if (isEmailValid() && isPasswordValid() && isfullNameValid()) {
+            errorBorderOff(emailTextField)
+            errorBorderOff(passwordTextField)
+            errorBorderOff(fullnameTextField)
+            return true
+        }
+        else{
+            if !isEmailValid() {
+                errorBorderOn(emailTextField)
+            } else {errorBorderOff(emailTextField)}
+            if !isPasswordValid() {
+                errorBorderOn(passwordTextField)
+            } else {errorBorderOff(passwordTextField)}
+            if !isfullNameValid() {
+                errorBorderOn(fullnameTextField)
+            } else {errorBorderOff(fullnameTextField)}
+            return false
+        }
+    }
 }
 
 extension SecondViewController {
-    func setUserList(list: [User]) {
-        self.users = list
-    }
-    
-    func isEmailValid() -> Bool {
+        
+    private func isEmailValid() -> Bool {
         let email = emailTextField.text ?? ""
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPred = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         return emailPred.evaluate(with: email)
     }
     
-    func isPasswordValid() -> Bool {
+    private func isPasswordValid() -> Bool {
         return passwordTextField.text!.count >= 6
     }
     
-    func isfullNameValid() -> Bool {
+    private func isfullNameValid() -> Bool {
         let fullName = fullnameTextField.text ?? ""
         let regex = "[A-Za-z]{2,}"
         let predicate = NSPredicate(format: "SELF MATCHES %@", regex)
         return predicate.evaluate(with: fullName)
     }
     
-    @IBAction private func signupButtonClicked(_ sender: UIButton) {
-        if isEmailValid() && isfullNameValid() && isPasswordValid() {
-            let user = User(fullname: fullnameTextField.text, email: emailTextField.text ?? "", password: passwordTextField.text ?? "")
-            delegate?.newUserAdded(newUser: user)
-            emailTextField.text = ""
-            passwordTextField.text = ""
-            fullnameTextField.text = ""
-        }
+    private func errorBorderOn(_ textfield: UITextField) {
+        textfield.layer.borderColor = UIColor(.red).cgColor
+        textfield.layer.borderWidth = 1
+        textfield.layer.cornerRadius = 7
+    }
+    
+    private func errorBorderOff(_ textfield: UITextField) {
+        textfield.layer.cornerRadius = 7
+        textfield.layer.borderWidth = 1
+        textfield.layer.borderColor = UIColor(named: "black")?.cgColor
     }
 }
+    
+    
+//    @IBAction private func signupButtonClicked(_ sender: UIButton) {
+//        if isEmailValid() && isfullNameValid() && isPasswordValid() {
+//            let user = User(fullname: fullnameTextField.text, email: emailTextField.text!, password: passwordTextField.text!)
+//            print(user)
+//            emailTextField.text = ""
+//            passwordTextField.text = ""
+//            fullnameTextField.text = ""
+//            if let thirdVC = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController {
+//                callback?(user)
+//                navigationController?.pushViewController(thirdVC, animated: true)
+//            }
+//            if (navigationController?.viewControllers.count ?? 0) > 1 {
+//                navigationController?.viewControllers.removeFirst()
+//            }
+////            print(navigationController?.viewControllers)
+//        }
+    
+//    @IBAction private func loginButtonClicked(_ sender: UIButton) {
+//        let controller = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
+//        navigationController?.pushViewController(controller, animated: true)
+//    }
+

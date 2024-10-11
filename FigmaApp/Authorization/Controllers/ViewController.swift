@@ -19,15 +19,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationItem.titleView = nil
+        navigationController?.setNavigationBarHidden(true, animated: true)
         configureView()
         configureLabels()
         configureButton()
-    }
-    
-    @IBAction private func buttonClicked(_ sender: UIButton) {
-        let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
-        present(controller, animated: true)
     }
     
     private func configureView() {
@@ -52,15 +47,22 @@ class ViewController: UIViewController {
         designLabel.font = UIFont(name: "Engravers MT", size: 24)
         designLabel.text = "#1 in Design Tutorial"
         longLabel.font = UIFont(name: "Inter", size: 16)
-        longLabel.text = "we are the leading online community to   teach the web and mobile design from basic to pro."
+        longLabel.text = "we are the leading online community to     teach the web and mobile design from basic       to pro."
     }
     
     private func configureButton() {
         loginButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
         loginButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
         loginButton.setTitle("Get Started", for: .normal)
-        loginButton.tintColor = .white
+        loginButton.titleLabel?.textColor = .white
         loginButton.layer.cornerRadius = 7
+        
+        loginButton.addTarget(self, action: #selector (loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc private func loginButtonTapped() {
+        let controller = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 

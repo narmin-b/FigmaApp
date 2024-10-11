@@ -7,11 +7,10 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewControllerDelegate {
+class ThirdViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var signupTextView: UITextView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordLabel: UILabel!
@@ -19,15 +18,16 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var continueLabel: UILabel!
     @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var signupLabel: UILabel!
+    @IBOutlet weak var signupButton: UIButton!
     
     var iconClick = false
     let imageIcon = UIImageView()
-    var users: [User] = []
+    var registerInfo: User = User(email: "", password: "")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //dump(users)
+
         configureView()
         configureLabels()
         configureEmailTextField()
@@ -35,11 +35,9 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
         configureButton()
         configureTextButton()
         
-        let registerController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
-        
-        registerController.delegate = self
-        registerController.setUserList(list: users)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     
     private func configureView() {
         let img = UIImageView(image: UIImage(named: "bg"))
@@ -71,7 +69,8 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
         emailTextField.layer.cornerRadius = 7
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor(named: "black")?.cgColor
-    }s
+        emailTextField.delegate = self
+    }
     
     private func configureButton() {
         loginButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
@@ -79,29 +78,40 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
         loginButton.setTitle("Login", for: .normal)
         loginButton.tintColor = .white
         loginButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
+        
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc fileprivate func loginButtonTapped() {
+        print(#function)
     }
     
     private func configureTextButton() {
-        let fullText = "Don’t have an account? SignUp"
-        let attributedString = NSMutableAttributedString(string: fullText)
-                
-        let loginRange = (fullText as NSString).range(of: "SignUp")
-                
-        attributedString.addAttribute(.link, value: "loginAction", range: loginRange)
-        attributedString.addAttribute(.foregroundColor, value: UIColor.systemBlue, range: loginRange)
-        attributedString.addAttribute(.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: loginRange)
-
-        signupTextView.attributedText = attributedString
-        signupTextView.isEditable = false
-        signupTextView.isScrollEnabled = false
-        signupTextView.textAlignment = .center
-        signupTextView.textColor = .black
-        signupTextView.backgroundColor = .clear
-        signupTextView.font = UIFont(name: "Red Hat Display", size: 12)
-                
-        signupTextView.delegate = self
+        signupLabel.text = "Don’t have an account?"
+        signupLabel.font = UIFont(name: "Red Hat Display", size: 12)
+        
+        let signupTitle = NSAttributedString(string: "SignUp", attributes: [
+            .font: UIFont(name: "Red Hat Display", size: 12)!,
+            .foregroundColor: UIColor.systemBlue,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ])
+        
+        signupButton.setAttributedTitle(signupTitle, for: .normal)
+        
+        signupButton.addTarget(self, action: #selector(signupButtonClicked), for: .touchUpInside)
     }
 
+    @objc fileprivate func signupButtonClicked() {
+        showRegisterController()
+    }
+
+    private func showRegisterController() {
+        let controller = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
+        controller.delegate = self
+        navigationController?.pushViewController(controller, animated: true)
+        print(navigationController?.viewControllers)
+    }
+    
     private func configurePasswordTextField() {
         passwordLabel.text = "Password"
         passwordLabel.font = UIFont(name: "Red Hat Display", size: 10)
@@ -110,6 +120,7 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor(named: "black")?.cgColor
         passwordTextField.tintColor = .black
+        passwordTextField.delegate = self
         
         imageIcon.image = UIImage(systemName: "eye.fill")
         
@@ -141,34 +152,11 @@ class ThirdViewController: UIViewController, UITextViewDelegate, SecondViewContr
         }
     }
     
-    
-    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
-            if URL.absoluteString == "loginAction" {
-                let signupVC = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
-                present(signupVC, animated: true)
-                //navigationController?.popViewController(animated: true)
-            }
-            return true
-        }
-    
 }
 
-extension ThirdViewController {
-    func newUserAdded(newUser: User) {
-        users.append(newUser)
-        dump(users)
-    }
-    
-    func isUserValid() -> Bool {
-        if users.contains(where: {$0.email == emailTextField.text}) && users.contains(where: {$0.password == passwordTextField.text}) {
-            return true
-        }
-        return false
-    }
-    
-    @IBAction private func loginButtonClicked(_ sender: UIButton) {
-        if isUserValid() {
-            print("success")
-        }
+extension ThirdViewController: SecondViewControllerDelegate {
+    func didFinish(user: User) {
+        emailTextField.text = user.email
+        passwordTextField.text = user.password
     }
 }
