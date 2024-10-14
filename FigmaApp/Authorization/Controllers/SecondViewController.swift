@@ -38,14 +38,8 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         configureView()
-        configureLabels()
-        configureFullnameTextField()
-        configureEmailTextField()
-        configurePasswordTextField()
-        configureButton()
-        configureTextButton()
-        print(navigationController?.viewControllers)
         
+        print(navigationController?.viewControllers)
     }
     
     private func configureView() {
@@ -62,6 +56,13 @@ class SecondViewController: UIViewController, UITextViewDelegate {
             img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
             img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
         ])
+        
+        configureLabels()
+        configureFullnameTextField()
+        configureEmailTextField()
+        configurePasswordTextField()
+        configureButton()
+        configureTextButton()
     }
     
     private func configureLabels() {

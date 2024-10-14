@@ -29,11 +29,6 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         configureView()
-        configureLabels()
-        configureEmailTextField()
-        configurePasswordTextField()
-        configureButton()
-        configureTextButton()
         
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
@@ -53,6 +48,12 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
             img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
             img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
         ])
+        
+        configureLabels()
+        configureEmailTextField()
+        configurePasswordTextField()
+        configureButton()
+        configureTextButton()
     }
     
     private func configureLabels() {
@@ -83,7 +84,13 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc fileprivate func loginButtonTapped() {
-        print(#function)
+//        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
+//            sceneDelegate.showMain()
+//            sceneDelegate.scene(<#T##scene: UIScene##UIScene#>, willConnectTo: <#T##UISceneSession#>, options: <#T##UIScene.ConnectionOptions#>)
+//        }
+        let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController ?? MainViewController()
+        navigationController?.pushViewController(controller, animated: true)
+//        self.view.window?.rootViewController = showMain()
     }
     
     private func configureTextButton() {
@@ -109,7 +116,6 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         let controller = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "SecondViewController") as? SecondViewController ?? SecondViewController()
         controller.delegate = self
         navigationController?.pushViewController(controller, animated: true)
-        print(navigationController?.viewControllers)
     }
     
     private func configurePasswordTextField() {
@@ -160,3 +166,4 @@ extension ThirdViewController: SecondViewControllerDelegate {
         passwordTextField.text = user.password
     }
 }
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AnswersCollectionViewCell" id="gTV-IL-0wX" customClass="AnswersCollectionViewCell" customModule="FigmaApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="351" height="357"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="351" height="357"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="494-DG-EdB">
+                        <rect key="frame" x="0.0" y="0.0" width="351" height="357"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="TG3-jg-jRD">
+                                <rect key="frame" x="0.0" y="0.0" width="351" height="357"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="12" minimumInteritemSpacing="12" id="flW-J2-SMp">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="TG3-jg-jRD" firstAttribute="top" secondItem="494-DG-EdB" secondAttribute="top" id="3md-ji-I3X"/>
+                            <constraint firstAttribute="bottom" secondItem="TG3-jg-jRD" secondAttribute="bottom" id="f3a-9W-26t"/>
+                            <constraint firstAttribute="trailing" secondItem="TG3-jg-jRD" secondAttribute="trailing" id="j0z-Nv-vdS"/>
+                            <constraint firstItem="TG3-jg-jRD" firstAttribute="leading" secondItem="494-DG-EdB" secondAttribute="leading" id="th6-gN-Tad"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="494-DG-EdB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ALF-QO-8yz"/>
+                <constraint firstItem="494-DG-EdB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Yb3-dH-35G"/>
+                <constraint firstAttribute="trailing" secondItem="494-DG-EdB" secondAttribute="trailing" id="grc-86-aqd"/>
+                <constraint firstAttribute="bottom" secondItem="494-DG-EdB" secondAttribute="bottom" id="lpX-oe-n5i"/>
+            </constraints>
+            <size key="customSize" width="351" height="357"/>
+            <connections>
+                <outlet property="collection" destination="TG3-jg-jRD" id="nTg-6b-1SC"/>
+            </connections>
+            <point key="canvasLocation" x="359.5419847328244" y="-77.112676056338032"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

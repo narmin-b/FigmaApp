@@ -21,8 +21,6 @@ class ViewController: UIViewController {
         
         navigationController?.setNavigationBarHidden(true, animated: true)
         configureView()
-        configureLabels()
-        configureButton()
     }
     
     private func configureView() {
@@ -39,6 +37,9 @@ class ViewController: UIViewController {
             img.widthAnchor.constraint(equalTo: bgView.widthAnchor),
             img.heightAnchor.constraint(equalTo: bgView.heightAnchor)
         ])
+        
+        configureLabels()
+        configureButton()
     }
     
     private func configureLabels() {
