@@ -11,6 +11,7 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var collection: UICollectionView!
     
     var questionList: [Question] = []
+    private var currentIndex = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,6 +61,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnswersCollectionViewCell", for: indexPath) as! AnswersCollectionViewCell
         let model = questionList[indexPath.row]
+        cell.delegate = self
         cell.configureCell(model: model)
         return cell
     }
@@ -67,6 +69,19 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return .init(width: collectionView.frame.width, height: collectionView.frame.height)
     }
-    
-    
+}
+
+extension MainViewController: AnswersCollectionViewCellDelegate {
+    func didSelectCorrectAnswer(at indexPath: IndexPath) {
+        
+        currentIndex += 1
+        
+        if currentIndex < questionList.count {
+            let nextIndexPath = IndexPath(item: currentIndex, section: 0)
+            collection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+        } else {
+            print("End of questions reached.")
+            currentIndex = -1
+        }
+    }
 }

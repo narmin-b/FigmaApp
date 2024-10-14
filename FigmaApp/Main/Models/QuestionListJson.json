@@ -61,5 +61,26 @@
         "correct": false
       }
     ]
+  },
+  {
+    "title": "What is the capital of Aze?",
+    "answer": [
+      {
+        "title": "Baku",
+        "correct": true
+      },
+      {
+        "title": "Berlin",
+        "correct": false
+      },
+      {
+        "title": "Madrid",
+        "correct": false
+      },
+      {
+        "title": "Rome",
+        "correct": false
+      }
+    ]
   }
 ]
