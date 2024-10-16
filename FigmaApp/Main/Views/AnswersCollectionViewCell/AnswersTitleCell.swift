@@ -20,3 +20,6 @@ class AnswersTitleCell: UICollectionViewCell {
         answerLabel.layer.masksToBounds = true
     }
 }
+
+
+    

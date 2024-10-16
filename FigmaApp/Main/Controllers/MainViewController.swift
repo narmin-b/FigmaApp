@@ -74,16 +74,24 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: AnswersCollectionViewCellDelegate {
-    func didSelectCorrectAnswer(at indexPath: IndexPath) {
-        
+    func noOFQuestionsReached(at indexPath: IndexPath) {
+        return
+    }
+    
+    
+    func changeToNextQuestion(at indexPath: IndexPath) {
+                
         currentIndex += 1
-        
+
         if currentIndex < questionList.count {
             let nextIndexPath = IndexPath(item: currentIndex, section: 0)
             collection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
         } else {
             print("End of questions reached.")
-            currentIndex = -1
+            currentIndex = 0
+            collection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
+        
+
     }
 }
