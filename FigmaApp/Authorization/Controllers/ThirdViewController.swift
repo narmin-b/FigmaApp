@@ -29,7 +29,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
 
         configureView()
-        
+        UserDefaults.standard.setValue(1, forKey: "loginType")
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
@@ -83,13 +83,19 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
     }
     
+    fileprivate func showMain() {
+        if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+            scene.switchToMain()
+        }
+    }
+    
     @objc fileprivate func loginButtonTapped() {
 //        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
 //            sceneDelegate.showMain()
 //            sceneDelegate.scene(<#T##scene: UIScene##UIScene#>, willConnectTo: <#T##UISceneSession#>, options: <#T##UIScene.ConnectionOptions#>)
 //        }
-        let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController ?? MainViewController()
-        navigationController?.pushViewController(controller, animated: true)
+        showMain()
+
 //        self.view.window?.rootViewController = showMain()
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1108ABF82CBEFBA900B8C9E5 /* UserDefaultsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108ABF72CBEFBA900B8C9E5 /* UserDefaultsHelper.swift */; };
+		1108ABFA2CBEFBBB00B8C9E5 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1108ABF92CBEFBBB00B8C9E5 /* UserDefaultsKey.swift */; };
 		11235E7B2CB415C900C81DF9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11235E7A2CB415C900C81DF9 /* Main.storyboard */; };
 		1126AD0A2CBBDBC9007EED7B /* QuestionListJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 1126AD092CBBDBC9007EED7B /* QuestionListJson.json */; };
 		114840892CAB2A1D00282DC4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114840882CAB2A1D00282DC4 /* AppDelegate.swift */; };
@@ -33,6 +35,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1108ABF72CBEFBA900B8C9E5 /* UserDefaultsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsHelper.swift; sourceTree = "<group>"; };
+		1108ABF92CBEFBBB00B8C9E5 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		11235E7A2CB415C900C81DF9 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		1126AD092CBBDBC9007EED7B /* QuestionListJson.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = QuestionListJson.json; sourceTree = "<group>"; };
 		114840852CAB2A1D00282DC4 /* FigmaApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FigmaApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -71,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1108ABFB2CBEFBBF00B8C9E5 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				1108ABF72CBEFBA900B8C9E5 /* UserDefaultsHelper.swift */,
+				1108ABF92CBEFBBB00B8C9E5 /* UserDefaultsKey.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		11235E7C2CB4164000C81DF9 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
@@ -162,6 +175,7 @@
 				11235E7F2CB416A700C81DF9 /* App */,
 				11235E7C2CB4164000C81DF9 /* Authorization */,
 				11235E7D2CB4165600C81DF9 /* Main */,
+				1108ABFB2CBEFBBF00B8C9E5 /* Helpers */,
 				11235E822CB416FB00C81DF9 /* Resources */,
 				114840962CAB2A1F00282DC4 /* Info.plist */,
 			);
@@ -312,10 +326,12 @@
 			files = (
 				11A69AE92CB94DF800BC14AB /* MainViewController.swift in Sources */,
 				117449652CAC4F15001E1EB6 /* SecondViewController.swift in Sources */,
+				1108ABFA2CBEFBBB00B8C9E5 /* UserDefaultsKey.swift in Sources */,
 				11A69AF52CB96B2A00BC14AB /* QuestionHeaderView.swift in Sources */,
 				116BEB2C2CBD3A3500266625 /* AnswersTitleCell.swift in Sources */,
 				1148408D2CAB2A1D00282DC4 /* ViewController.swift in Sources */,
 				119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */,
+				1108ABF82CBEFBA900B8C9E5 /* UserDefaultsHelper.swift in Sources */,
 				114840892CAB2A1D00282DC4 /* AppDelegate.swift in Sources */,
 				11A69AF02CB96AD200BC14AB /* AnswersCollectionViewCell.swift in Sources */,
 				11A69AF82CB96D4D00BC14AB /* QuestionModels.swift in Sources */,

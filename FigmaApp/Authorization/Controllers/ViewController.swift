@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UserDefaults.standard.setValue(0, forKey: "loginType")
         navigationController?.setNavigationBarHidden(true, animated: true)
         configureView()
     }

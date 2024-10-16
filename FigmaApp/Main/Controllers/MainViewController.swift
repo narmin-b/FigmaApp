@@ -17,6 +17,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         configureView()
         generateQuestions()
+        UserDefaults.standard.setValue(2, forKey: "loginType")
     }
     
     fileprivate func generateQuestions() {

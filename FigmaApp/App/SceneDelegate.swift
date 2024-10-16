@@ -10,41 +10,79 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    public var isLogin = true
+    private var loginType = UserDefaults.standard.integer(forKey: "loginType")
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
-        let newWindow = UIWindow(windowScene: windowScene)
-
-        newWindow.rootViewController = isLogin ? showMain() : showLogin()
-
-        window = newWindow
-        window?.makeKeyAndVisible()
+        start(scene: windowScene)
         
         guard let _ = (scene as? UIWindowScene) else { return }
     }
+    
+    fileprivate func start(scene: UIWindowScene) {
+        var newWindow: UIWindow?
+        switch loginType {
+        case 0:
+            newWindow = showGetStarted(scene: scene)
+        case 1:
+            newWindow = showLoginController(scene: scene)
+        default:
+            newWindow = showMainController(scene: scene)
+        }
+        window = newWindow
+        window?.makeKeyAndVisible()
+    }
 
-    func showLogin() -> UINavigationController {
+    private func showLoginController(scene: UIWindowScene) -> UIWindow {
         let loginController = UIStoryboard.init(
             name: "Auth",
             bundle: Bundle.main
         ).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
         
         let navigationController = UINavigationController(rootViewController: loginController)
-
-        return navigationController
+        let newWindow = UIWindow(windowScene: scene)
+        newWindow.rootViewController = navigationController
+        
+        return newWindow
     }
     
-    public func showMain() -> UINavigationController {
+    private func showGetStarted(scene: UIWindowScene) -> UIWindow {
+        let loginController = UIStoryboard.init(
+            name: "Auth",
+            bundle: Bundle.main
+        ).instantiateViewController(withIdentifier: "ViewController") as? ViewController ?? ViewController()
+        
+        let navigationController = UINavigationController(rootViewController: loginController)
+        let newWindow = UIWindow(windowScene: scene)
+        newWindow.rootViewController = navigationController
+        
+        return newWindow
+    }
+    
+    private func showMainController(scene: UIWindowScene) -> UIWindow {
         let mainController = UIStoryboard.init(
             name: "Main",
             bundle: Bundle.main
         ).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController ?? MainViewController()
         
         let navigationController = UINavigationController(rootViewController: mainController)
-
-        return navigationController
+        let newWindow = UIWindow(windowScene: scene)
+        newWindow.rootViewController = navigationController
+        
+        return newWindow
+    }
+    
+    func switchToLogin() {
+        guard let windowScene = window?.windowScene else { return }
+        window = showLoginController(scene: windowScene)
+        window?.makeKeyAndVisible()
+    }
+    
+    func switchToMain() {
+        guard let windowScene = window?.windowScene else { return }
+        window = showMainController(scene: windowScene)
+        window?.makeKeyAndVisible()
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
