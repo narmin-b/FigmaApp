@@ -16,6 +16,9 @@ class QuestionHeaderView: UICollectionReusableView {
     }
     
     func configureView(model: Question) {
+        
         questionLabel.text = model.title
+        questionLabel.layer.cornerRadius = 20
+        questionLabel.layer.masksToBounds = true
     }
 }

@@ -10,11 +10,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="QuestionHeaderView" id="U6b-Vx-4bR" customClass="QuestionHeaderView" customModule="FigmaApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="391" height="94"/>
+            <rect key="frame" x="0.0" y="0.0" width="711" height="485"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0V1-tj-uJn">
-                    <rect key="frame" x="0.0" y="0.0" width="391" height="60"/>
+                    <rect key="frame" x="0.0" y="44" width="711" height="337"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
@@ -24,14 +24,14 @@
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
                 <constraint firstItem="VXr-Tz-HHm" firstAttribute="trailing" secondItem="0V1-tj-uJn" secondAttribute="trailing" id="Eh6-iz-Fil"/>
-                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="0V1-tj-uJn" secondAttribute="bottom" id="Gb9-9l-vrr"/>
-                <constraint firstItem="0V1-tj-uJn" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="W3S-Vu-dBW"/>
+                <constraint firstItem="VXr-Tz-HHm" firstAttribute="bottom" secondItem="0V1-tj-uJn" secondAttribute="bottom" constant="70" id="Gb9-9l-vrr"/>
+                <constraint firstItem="0V1-tj-uJn" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="44" id="W3S-Vu-dBW"/>
                 <constraint firstItem="0V1-tj-uJn" firstAttribute="leading" secondItem="VXr-Tz-HHm" secondAttribute="leading" id="Xwf-RW-57T"/>
             </constraints>
             <connections>
                 <outlet property="questionLabel" destination="0V1-tj-uJn" id="jHR-2N-4L6"/>
             </connections>
-            <point key="canvasLocation" x="135.1145038167939" y="-14.084507042253522"/>
+            <point key="canvasLocation" x="227" y="73"/>
         </collectionReusableView>
     </objects>
 </document>

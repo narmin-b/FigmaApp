@@ -16,5 +16,7 @@ class AnswersTitleCell: UICollectionViewCell {
 
     func configureCell(model: Answer) {
         answerLabel.text = model.title
+        answerLabel.layer.cornerRadius = 20
+        answerLabel.layer.masksToBounds = true
     }
 }

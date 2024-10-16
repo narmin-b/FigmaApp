@@ -44,6 +44,7 @@ class MainViewController: UIViewController {
     
     fileprivate func configureView() {
         configureCollection()
+        view.backgroundColor = UIColor(red: 0.9373, green: 0.9412, blue: 0.9529, alpha: 1.0)
     }
     
     fileprivate func configureCollection() {
@@ -68,7 +69,7 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: collectionView.frame.width, height: collectionView.frame.height)
+        return .init(width: 383, height: collectionView.frame.height)
     }
 }
 
