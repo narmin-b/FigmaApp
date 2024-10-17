@@ -23,7 +23,7 @@
                             <fragment content="Label">
                                 <attributes>
                                     <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <font key="NSFont" size="20" name=".SFNS-Regular"/>
+                                    <font key="NSFont" metaFont="system" size="20"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" firstLineHeadIndent="30" tighteningFactorForTruncation="0.0"/>
                                 </attributes>
                             </fragment>

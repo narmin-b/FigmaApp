@@ -78,7 +78,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         fullnameTextField.font = UIFont(name: "Red Hat Display", size: 10)
         fullnameTextField.layer.cornerRadius = 7
         fullnameTextField.layer.borderWidth = 1
-        fullnameTextField.layer.borderColor = UIColor(named: "black")?.cgColor
+        fullnameTextField.layer.borderColor = UIColor(resource: .textfieldBorder).cgColor
     }
     
     private func configureEmailTextField() {
@@ -87,7 +87,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         emailTextField.font = UIFont(name: "Red Hat Display", size: 10)
         emailTextField.layer.cornerRadius = 7
         emailTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = UIColor(named: "black")?.cgColor
+        emailTextField.layer.borderColor = UIColor(resource: .textfieldBorder).cgColor
     }
     
     private func configurePasswordTextField() {
@@ -96,7 +96,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         passwordTextField.font = UIFont(name: "Red Hat Display", size: 10)
         passwordTextField.layer.cornerRadius = 7
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = UIColor(named: "black")?.cgColor
+        passwordTextField.layer.borderColor = UIColor(resource: .textfieldBorder).cgColor
         passwordTextField.tintColor = .black
         
         imageIcon.image = UIImage(systemName: "eye.fill")
@@ -130,7 +130,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
     }
     
     private func configureButton() {
-        signupButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
+        signupButton.backgroundColor = .authButton
         signupButton.layer.cornerRadius = 7
         signupButton.setTitle("Sign Up", for: .normal)
         signupButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
@@ -140,14 +140,6 @@ class SecondViewController: UIViewController, UITextViewDelegate {
     }
     
     @objc fileprivate func signupButtonTapped() {
-//        if isEmailValid() && isfullNameValid() && isPasswordValid() {
-//            let user = User(fullname: fullnameTextField.text, email: emailTextField.text!, password: passwordTextField.text!)
-//            emailTextField.text = ""
-//            passwordTextField.text = ""
-//            fullnameTextField.text = ""
-//            delegate?.didFinish(user: user)
-//            navigationController?.popViewController(animated: true)
-//        }
         signUpButtonClicked()
     }
     
@@ -237,26 +229,4 @@ extension SecondViewController {
     }
 }
     
-    
-//    @IBAction private func signupButtonClicked(_ sender: UIButton) {
-//        if isEmailValid() && isfullNameValid() && isPasswordValid() {
-//            let user = User(fullname: fullnameTextField.text, email: emailTextField.text!, password: passwordTextField.text!)
-//            print(user)
-//            emailTextField.text = ""
-//            passwordTextField.text = ""
-//            fullnameTextField.text = ""
-//            if let thirdVC = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController {
-//                callback?(user)
-//                navigationController?.pushViewController(thirdVC, animated: true)
-//            }
-//            if (navigationController?.viewControllers.count ?? 0) > 1 {
-//                navigationController?.viewControllers.removeFirst()
-//            }
-////            print(navigationController?.viewControllers)
-//        }
-    
-//    @IBAction private func loginButtonClicked(_ sender: UIButton) {
-//        let controller = UIStoryboard(name: "Auth", bundle: Bundle.main).instantiateViewController(withIdentifier: "ThirdViewController") as? ThirdViewController ?? ThirdViewController()
-//        navigationController?.pushViewController(controller, animated: true)
-//    }
 

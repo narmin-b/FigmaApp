@@ -8,10 +8,7 @@
 import UIKit
 
 protocol AnswersCollectionViewCellDelegate: AnyObject {
-//    func didSelectCorrectAnswer(at indexPath: IndexPath)
-//    func didSelectIncorrectAnswer(at indexPath: IndexPath)
     func changeToNextQuestion(at indexPath: IndexPath)
-    func noOFQuestionsReached(at indexPath: IndexPath)
 }
 
 class AnswersCollectionViewCell: UICollectionViewCell {
@@ -70,8 +67,7 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         switch kind {
             case UICollectionView.elementKindSectionHeader:
                 let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "QuestionHeaderView", for: indexPath) as! QuestionHeaderView
-            guard let model = question else {return UICollectionReusableView()}
-            delegate?.noOFQuestionsReached(at: indexPath)
+                guard let model = question else {return UICollectionReusableView()}
                 header.configureView(model: model)
                 return header
             default:
@@ -83,8 +79,8 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         guard let answer = question?.answer[indexPath.row] else {return}
         if answer.correct {
             let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell 
-            myCell.answerLabel.backgroundColor = UIColor(red: 0.6706, green: 0.8196, blue: 0.7765, alpha: 1.0)
-            myCell.answerLabel.textColor = UIColor(red: 0, green: 0.2745, blue: 0.2627, alpha: 1.0)
+            myCell.answerLabel.backgroundColor = .correctSelection
+            myCell.answerLabel.textColor = .correctCellText
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
                 delegate?.changeToNextQuestion(at: indexPath)
                 myCell.answerLabel.backgroundColor = .white
@@ -93,14 +89,13 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         }
         else {
             let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
-            myCell.answerLabel.backgroundColor = UIColor(red: 0.6706, green: 0, blue: 0, alpha: 0.5)
-            myCell.answerLabel.textColor = UIColor(red: 0.6706, green: 0, blue: 0, alpha: 1)
+            myCell.answerLabel.backgroundColor = .wrongSelection
+            myCell.answerLabel.textColor = .wrongCellText
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 myCell.answerLabel.backgroundColor = .white
                 myCell.answerLabel.textColor = .black
             }
         }
-        print(#function, answer, indexPath.row)
     }
     
 }

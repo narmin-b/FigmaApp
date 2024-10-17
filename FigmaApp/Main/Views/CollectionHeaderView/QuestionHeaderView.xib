@@ -20,13 +20,6 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TfU-gL-GzI">
-                    <rect key="frame" x="334" y="49" width="33" height="16"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
             <constraints>
@@ -37,7 +30,6 @@
             </constraints>
             <connections>
                 <outlet property="questionLabel" destination="0V1-tj-uJn" id="jHR-2N-4L6"/>
-                <outlet property="questionNum" destination="TfU-gL-GzI" id="6t1-dt-ZUF"/>
             </connections>
             <point key="canvasLocation" x="227" y="73"/>
         </collectionReusableView>

@@ -21,6 +21,8 @@
 		116BEB2B2CBD3A3500266625 /* AnswersTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 116BEB2A2CBD3A3500266625 /* AnswersTitleCell.xib */; };
 		116BEB2C2CBD3A3500266625 /* AnswersTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116BEB292CBD3A3500266625 /* AnswersTitleCell.swift */; };
 		117449652CAC4F15001E1EB6 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 117449642CAC4F15001E1EB6 /* SecondViewController.swift */; };
+		11771E0C2CC18105007EBD98 /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11771E0B2CC18105007EBD98 /* ResultsViewController.swift */; };
+		11771E102CC18986007EBD98 /* Baloo2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11771E0F2CC18986007EBD98 /* Baloo2-Regular.ttf */; };
 		118069C52CAB3782002B761E /* Inter.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 118069C42CAB3782002B761E /* Inter.ttc */; };
 		119877072CAC57970040D8E9 /* RedHatDisplay-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */; };
 		119877092CAC82AF0040D8E9 /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 119877082CAC82AF0040D8E9 /* ThirdViewController.swift */; };
@@ -51,6 +53,8 @@
 		116BEB292CBD3A3500266625 /* AnswersTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswersTitleCell.swift; sourceTree = "<group>"; };
 		116BEB2A2CBD3A3500266625 /* AnswersTitleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswersTitleCell.xib; sourceTree = "<group>"; };
 		117449642CAC4F15001E1EB6 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		11771E0B2CC18105007EBD98 /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
+		11771E0F2CC18986007EBD98 /* Baloo2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-Regular.ttf"; sourceTree = "<group>"; };
 		118069C42CAB3782002B761E /* Inter.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttc; sourceTree = "<group>"; };
 		119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RedHatDisplay-Regular.ttf"; sourceTree = "<group>"; };
 		119877082CAC82AF0040D8E9 /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			children = (
 				114840912CAB2A1F00282DC4 /* Assets.xcassets */,
 				114840932CAB2A1F00282DC4 /* LaunchScreen.storyboard */,
+				11771E0F2CC18986007EBD98 /* Baloo2-Regular.ttf */,
 				1148409C2CAB2C4900282DC4 /* ELEPHNT.TTF */,
 				11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */,
 				118069C42CAB3782002B761E /* Inter.ttc */,
@@ -203,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				11A69AE82CB94DF800BC14AB /* MainViewController.swift */,
+				11771E0B2CC18105007EBD98 /* ResultsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 				119877072CAC57970040D8E9 /* RedHatDisplay-Regular.ttf in Resources */,
 				1126AD0A2CBBDBC9007EED7B /* QuestionListJson.json in Resources */,
 				116BEB2B2CBD3A3500266625 /* AnswersTitleCell.xib in Resources */,
+				11771E102CC18986007EBD98 /* Baloo2-Regular.ttf in Resources */,
 				11A69AF42CB96B2A00BC14AB /* QuestionHeaderView.xib in Resources */,
 				114840902CAB2A1D00282DC4 /* Base in Resources */,
 				1148409D2CAB2C4900282DC4 /* ELEPHNT.TTF in Resources */,
@@ -327,6 +334,7 @@
 				11A69AE92CB94DF800BC14AB /* MainViewController.swift in Sources */,
 				117449652CAC4F15001E1EB6 /* SecondViewController.swift in Sources */,
 				1108ABFA2CBEFBBB00B8C9E5 /* UserDefaultsKey.swift in Sources */,
+				11771E0C2CC18105007EBD98 /* ResultsViewController.swift in Sources */,
 				11A69AF52CB96B2A00BC14AB /* QuestionHeaderView.swift in Sources */,
 				116BEB2C2CBD3A3500266625 /* AnswersTitleCell.swift in Sources */,
 				1148408D2CAB2A1D00282DC4 /* ViewController.swift in Sources */,
@@ -494,7 +502,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -528,7 +536,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = Auth;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;

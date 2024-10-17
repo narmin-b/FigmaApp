@@ -10,7 +10,6 @@ import UIKit
 class QuestionHeaderView: UICollectionReusableView {
     
     @IBOutlet weak var questionLabel: UILabel!
-    @IBOutlet weak var questionNum: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,21 +20,6 @@ class QuestionHeaderView: UICollectionReusableView {
         questionLabel.text = model.title
         questionLabel.layer.cornerRadius = 20
         questionLabel.layer.masksToBounds = true
-        
-//        questionLabel.layer.shadowOpacity = 100
-//        questionLabel.layer.shadowColor = UIColor.black.cgColor
-//        questionLabel.layer.shadowRadius = 10
+        questionLabel.font = UIFont(name: "Baloo 2", size: 20)
     }
-}
-
-extension QuestionHeaderView: AnswersCollectionViewCellDelegate {
-    func changeToNextQuestion(at indexPath: IndexPath) {
-        return
-    }
-    
-    func noOFQuestionsReached(at indexPath: IndexPath) {
-        questionNum.text = "\(indexPath.row + 1)"
-    }
-    
-    
 }

@@ -8,16 +8,24 @@
 import UIKit
 
 class MainViewController: UIViewController {
-    @IBOutlet private weak var collection: UICollectionView!
+    @IBOutlet weak var collection: UICollectionView!
+    @IBOutlet weak var questionNum: UILabel!
     
     var questionList: [Question] = []
     private var currentIndex = 0
+    private var currentNo = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
         generateQuestions()
+        questionCount()
         UserDefaults.standard.setValue(2, forKey: "loginType")
+    }
+    
+    fileprivate func questionCount() {
+        questionNum.text = "1/\(questionList.count)"
+        questionNum.font = UIFont(name: "Baloo 2", size: 18)
     }
     
     fileprivate func generateQuestions() {
@@ -51,7 +59,6 @@ class MainViewController: UIViewController {
         collection.delegate = self
         collection.dataSource = self
         collection.register(UINib(nibName: "AnswersCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AnswersCollectionViewCell")
-        //collection.register(UINib(nibName: "QuestionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "QuestionHeaderView")
     }
 }
 
@@ -74,10 +81,10 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: AnswersCollectionViewCellDelegate {
-    func noOFQuestionsReached(at indexPath: IndexPath) {
-        return
+    func noOfQuestionsReached(at indexPath: IndexPath) {
+        questionNum.text = "\(currentIndex + 1)/\(questionList.count)"
+        questionNum.font = UIFont(name: "Baloo 2", size: 18)
     }
-    
     
     func changeToNextQuestion(at indexPath: IndexPath) {
                 
@@ -86,10 +93,12 @@ extension MainViewController: AnswersCollectionViewCellDelegate {
         if currentIndex < questionList.count {
             let nextIndexPath = IndexPath(item: currentIndex, section: 0)
             collection.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+            noOfQuestionsReached(at: nextIndexPath)
         } else {
             print("End of questions reached.")
             currentIndex = 0
             collection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
+            noOfQuestionsReached(at: IndexPath(item: 0, section: 0))
         }
         
 

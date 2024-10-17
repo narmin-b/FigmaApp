@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHk-QO-6Vv">
+                                <rect key="frame" x="175.66666666666666" y="59" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bcD-eY-GcB">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -32,17 +39,40 @@
                         <constraints>
                             <constraint firstItem="bcD-eY-GcB" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="0r9-Af-whv"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="bcD-eY-GcB" secondAttribute="bottom" id="CFr-D2-3cp"/>
+                            <constraint firstItem="ZHk-QO-6Vv" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Ev6-84-3VD"/>
+                            <constraint firstItem="ZHk-QO-6Vv" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="H6j-Bn-jYU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bcD-eY-GcB" secondAttribute="trailing" id="Zez-15-da5"/>
                             <constraint firstItem="bcD-eY-GcB" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="nz5-nV-JbQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="collection" destination="bcD-eY-GcB" id="YZC-4v-VRZ"/>
+                        <outlet property="questionNum" destination="ZHk-QO-6Vv" id="6pE-YY-2am"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31" y="-34"/>
         </scene>
+        <!--Results View Controller-->
+        <scene sceneID="oMi-0A-WaF">
+            <objects>
+                <viewController storyboardIdentifier="ResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="db3-Fm-hwe" customClass="ResultsViewController" customModule="FigmaApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Gd1-PB-sdh">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dx9-1a-CE3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hyx-eD-1mC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="761" y="-35"/>
+        </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

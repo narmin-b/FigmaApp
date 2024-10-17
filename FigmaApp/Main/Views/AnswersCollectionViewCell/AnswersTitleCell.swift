@@ -18,6 +18,7 @@ class AnswersTitleCell: UICollectionViewCell {
         answerLabel.text = model.title
         answerLabel.layer.cornerRadius = 20
         answerLabel.layer.masksToBounds = true
+        answerLabel.font = UIFont(name: "Baloo 2", size: 20)
     }
 }
 

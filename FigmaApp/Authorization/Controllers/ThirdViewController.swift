@@ -69,12 +69,12 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         emailTextField.font = UIFont(name: "Red Hat Display", size: 10)
         emailTextField.layer.cornerRadius = 7
         emailTextField.layer.borderWidth = 1
-        emailTextField.layer.borderColor = UIColor(named: "black")?.cgColor
+        emailTextField.layer.borderColor = UIColor(resource: .textfieldBorder).cgColor
         emailTextField.delegate = self
     }
     
     private func configureButton() {
-        loginButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
+        loginButton.backgroundColor = .authButton
         loginButton.layer.cornerRadius = 7
         loginButton.setTitle("Login", for: .normal)
         loginButton.tintColor = .white
@@ -90,13 +90,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc fileprivate func loginButtonTapped() {
-//        if let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate {
-//            sceneDelegate.showMain()
-//            sceneDelegate.scene(<#T##scene: UIScene##UIScene#>, willConnectTo: <#T##UISceneSession#>, options: <#T##UIScene.ConnectionOptions#>)
-//        }
         showMain()
-
-//        self.view.window?.rootViewController = showMain()
     }
     
     private func configureTextButton() {
@@ -130,7 +124,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.font = UIFont(name: "Red Hat Display", size: 10)
         passwordTextField.layer.cornerRadius = 7
         passwordTextField.layer.borderWidth = 1
-        passwordTextField.layer.borderColor = UIColor(named: "black")?.cgColor
+        passwordTextField.layer.borderColor = UIColor(resource: .textfieldBorder).cgColor
         passwordTextField.tintColor = .black
         passwordTextField.delegate = self
         

@@ -53,7 +53,8 @@ class ViewController: UIViewController {
     }
     
     private func configureButton() {
-        loginButton.backgroundColor = UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
+        loginButton.backgroundColor = .authButton
+        //UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
         loginButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
         loginButton.setTitle("Get Started", for: .normal)
         loginButton.titleLabel?.textColor = .white
