@@ -7,6 +7,8 @@
 
 import UIKit
 
+
+
 class ThirdViewController: UIViewController, UITextFieldDelegate {
     
     
@@ -24,6 +26,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
     var iconClick = false
     let imageIcon = UIImageView()
     var registerInfo: User = User(email: "", password: "")
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -161,6 +164,7 @@ class ThirdViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension ThirdViewController: SecondViewControllerDelegate {
+    
     func didFinish(user: User) {
         emailTextField.text = user.email
         passwordTextField.text = user.password

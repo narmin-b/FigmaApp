@@ -9,13 +9,16 @@ import UIKit
 
 protocol AnswersCollectionViewCellDelegate: AnyObject {
     func changeToNextQuestion(at indexPath: IndexPath)
+    func correctAnswers(correct: Int)
 }
 
 class AnswersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collection: UICollectionView!
     private var question: Question?
+    private var correctNum = 0
     
     weak var delegate: AnswersCollectionViewCellDelegate?
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -54,11 +57,11 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 383, height: 53)
+        return .init(width: 347, height: 53)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: 383, height: 325)
+        return .init(width: 347, height: 325)
     }
     
     
@@ -77,24 +80,23 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let answer = question?.answer[indexPath.row] else {return}
+        let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
+
         if answer.correct {
-            let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell 
             myCell.answerLabel.backgroundColor = .correctSelection
             myCell.answerLabel.textColor = .correctCellText
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-                delegate?.changeToNextQuestion(at: indexPath)
-                myCell.answerLabel.backgroundColor = .white
-                myCell.answerLabel.textColor = .black
-            }
+            correctNum += 1
         }
         else {
-            let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
             myCell.answerLabel.backgroundColor = .wrongSelection
             myCell.answerLabel.textColor = .wrongCellText
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                myCell.answerLabel.backgroundColor = .white
-                myCell.answerLabel.textColor = .black
-            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+            delegate?.changeToNextQuestion(at: indexPath)
+            delegate?.correctAnswers(correct: correctNum)
+            print(correctNum)
+            myCell.answerLabel.backgroundColor = .white
+            myCell.answerLabel.textColor = .black
         }
     }
     

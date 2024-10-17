@@ -7,13 +7,14 @@
 
 import UIKit
 
+
+
 class MainViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var questionNum: UILabel!
     
     var questionList: [Question] = []
     private var currentIndex = 0
-    private var currentNo = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,11 +77,15 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: 383, height: collectionView.frame.height)
+        return .init(width: 347, height: collectionView.frame.height)
     }
 }
 
 extension MainViewController: AnswersCollectionViewCellDelegate {
+    func correctAnswers(correct: Int) {
+        
+    }
+    
     func noOfQuestionsReached(at indexPath: IndexPath) {
         questionNum.text = "\(currentIndex + 1)/\(questionList.count)"
         questionNum.font = UIFont(name: "Baloo 2", size: 18)
@@ -96,11 +101,9 @@ extension MainViewController: AnswersCollectionViewCellDelegate {
             noOfQuestionsReached(at: nextIndexPath)
         } else {
             print("End of questions reached.")
-            currentIndex = 0
-            collection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
-            noOfQuestionsReached(at: IndexPath(item: 0, section: 0))
+            currentIndex = -1
+            let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ResultsViewController") as? ResultsViewController ?? ResultsViewController()
+            navigationController?.pushViewController(controller, animated: true)
         }
-        
-
     }
 }

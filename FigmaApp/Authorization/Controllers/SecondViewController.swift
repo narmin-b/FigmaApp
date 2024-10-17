@@ -38,9 +38,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         navigationController?.setNavigationBarHidden(true, animated: true)
         
         configureView()
-        
-        print(navigationController?.viewControllers)
-    }
+        }
     
     private func configureView() {
         let img = UIImageView(image: UIImage(named: "bg"))
@@ -169,6 +167,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         guard let name = fullnameTextField.text, let password = passwordTextField.text, let mail = emailTextField.text else {return}
         user = User(fullname: name, email: mail, password: password)
         guard let user = user else {return}
+        UserDefaults.standard.set(user.fullname ?? "", forKey: "username")
         delegate?.didFinish(user: user)
         navigationController?.popViewController(animated: true)
     }
