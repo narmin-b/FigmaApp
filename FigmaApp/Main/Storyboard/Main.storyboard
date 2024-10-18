@@ -62,6 +62,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4T1-Gu-1IU">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="363"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t1O-eI-8w8">
                                 <rect key="frame" x="176" y="59" width="41.333333333333343" height="20.333333333333343"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -93,16 +97,21 @@
                         <constraints>
                             <constraint firstItem="a9O-pm-YW7" firstAttribute="centerX" secondItem="Gd1-PB-sdh" secondAttribute="centerX" id="7qs-7s-A1P"/>
                             <constraint firstItem="t1O-eI-8w8" firstAttribute="top" secondItem="dx9-1a-CE3" secondAttribute="top" id="JBm-MB-PA3"/>
+                            <constraint firstItem="4T1-Gu-1IU" firstAttribute="leading" secondItem="dx9-1a-CE3" secondAttribute="leading" id="O8s-Ud-5u2"/>
                             <constraint firstItem="a5M-8y-tcq" firstAttribute="top" secondItem="a9O-pm-YW7" secondAttribute="bottom" constant="5" id="OXJ-2l-rzM"/>
+                            <constraint firstItem="4T1-Gu-1IU" firstAttribute="top" secondItem="Gd1-PB-sdh" secondAttribute="top" id="QvJ-bq-t13"/>
                             <constraint firstItem="t1O-eI-8w8" firstAttribute="centerX" secondItem="Gd1-PB-sdh" secondAttribute="centerX" id="WLN-Y9-kCZ"/>
                             <constraint firstItem="a9O-pm-YW7" firstAttribute="top" secondItem="7uO-Mw-ijm" secondAttribute="bottom" constant="5" id="ZMI-Pe-paC"/>
                             <constraint firstItem="a5M-8y-tcq" firstAttribute="centerX" secondItem="Gd1-PB-sdh" secondAttribute="centerX" id="aAq-bf-pfn"/>
                             <constraint firstItem="dx9-1a-CE3" firstAttribute="bottom" secondItem="a5M-8y-tcq" secondAttribute="bottom" constant="512" id="c8y-Bn-yPc"/>
                             <constraint firstItem="7uO-Mw-ijm" firstAttribute="centerX" secondItem="a9O-pm-YW7" secondAttribute="centerX" id="dj3-Rf-UMk"/>
+                            <constraint firstItem="4T1-Gu-1IU" firstAttribute="trailing" secondItem="dx9-1a-CE3" secondAttribute="trailing" id="kca-w0-ece"/>
+                            <constraint firstItem="dx9-1a-CE3" firstAttribute="bottom" secondItem="4T1-Gu-1IU" secondAttribute="bottom" constant="455" id="m53-iK-VI7"/>
                             <constraint firstItem="7uO-Mw-ijm" firstAttribute="top" secondItem="t1O-eI-8w8" secondAttribute="bottom" constant="29" id="sct-5Q-duM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgView" destination="4T1-Gu-1IU" id="vAW-Re-iRm"/>
                         <outlet property="headerLabel" destination="t1O-eI-8w8" id="hxk-S9-0iD"/>
                         <outlet property="leaderImage" destination="7uO-Mw-ijm" id="Et3-e5-iqy"/>
                         <outlet property="leaderName" destination="a9O-pm-YW7" id="7cO-kO-QwT"/>
@@ -111,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hyx-eD-1mC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="761" y="-35"/>
+            <point key="canvasLocation" x="759.5419847328244" y="-35.211267605633807"/>
         </scene>
     </scenes>
     <resources>

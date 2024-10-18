@@ -101,9 +101,11 @@ extension MainViewController: AnswersCollectionViewCellDelegate {
             noOfQuestionsReached(at: nextIndexPath)
         } else {
             print("End of questions reached.")
-            currentIndex = -1
+            currentIndex = 0
             let controller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ResultsViewController") as? ResultsViewController ?? ResultsViewController()
             navigationController?.pushViewController(controller, animated: true)
+            noOfQuestionsReached(at: IndexPath(item: 1, section: 0))
+            collection.scrollToItem(at: IndexPath(item: 0, section: 0), at: .centeredHorizontally, animated: true)
         }
     }
 }

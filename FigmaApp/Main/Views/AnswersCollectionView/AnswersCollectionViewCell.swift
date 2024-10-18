@@ -16,6 +16,7 @@ class AnswersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collection: UICollectionView!
     private var question: Question?
     private var correctNum = 0
+    private var flag = false
     
     weak var delegate: AnswersCollectionViewCellDelegate?
     
@@ -81,19 +82,22 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let answer = question?.answer[indexPath.row] else {return}
         let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
-
-        if answer.correct {
-            myCell.answerLabel.backgroundColor = .correctSelection
-            myCell.answerLabel.textColor = .correctCellText
-            correctNum += 1
-        }
-        else {
-            myCell.answerLabel.backgroundColor = .wrongSelection
-            myCell.answerLabel.textColor = .wrongCellText
+        if !flag {
+            flag = true
+            if answer.correct {
+                myCell.answerLabel.backgroundColor = .correctSelection
+                myCell.answerLabel.textColor = .correctCellText
+                correctNum += 1
+            }
+            else {
+                myCell.answerLabel.backgroundColor = .wrongSelection
+                myCell.answerLabel.textColor = .wrongCellText
+            }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
             delegate?.changeToNextQuestion(at: indexPath)
             delegate?.correctAnswers(correct: correctNum)
+            flag = false
             print(correctNum)
             myCell.answerLabel.backgroundColor = .white
             myCell.answerLabel.textColor = .black

@@ -12,12 +12,23 @@ class ResultsViewController: UIViewController {
     @IBOutlet weak var leaderName: UILabel!
     @IBOutlet weak var leaderImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var bgView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
+        bgView.backgroundColor = .bgColorr
+        UIBarButtonItem.appearance().tintColor = .white
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector (resetQuiz))  //UIBarButtonItem(title: "B", style: .plain, target: self, action: #selector(resetQuiz))
+    }
+    
+    @objc fileprivate func resetQuiz() {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    fileprivate func configureView() {
         configureHeader()
         configureLeaderboard()
-        
         configureName()
     }
     
