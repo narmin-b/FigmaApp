@@ -8,7 +8,6 @@
 import UIKit
 
 
-
 class MainViewController: UIViewController {
     @IBOutlet weak var collection: UICollectionView!
     @IBOutlet weak var questionNum: UILabel!
@@ -21,6 +20,7 @@ class MainViewController: UIViewController {
         configureView()
         generateQuestions()
         questionCount()
+        UserDefaults.standard.set(0, forKey: "correctNum")
         UserDefaults.standard.setValue(2, forKey: "loginType")
     }
     
@@ -61,6 +61,11 @@ class MainViewController: UIViewController {
         collection.dataSource = self
         collection.register(UINib(nibName: "AnswersCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "AnswersCollectionViewCell")
     }
+    
+    fileprivate func noOfQuestionsReached(at indexPath: IndexPath) {
+        questionNum.text = "\(currentIndex + 1)/\(questionList.count)"
+        questionNum.font = UIFont(name: "Baloo 2", size: 18)
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -82,14 +87,6 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
 }
 
 extension MainViewController: AnswersCollectionViewCellDelegate {
-    func correctAnswers(correct: Int) {
-        
-    }
-    
-    func noOfQuestionsReached(at indexPath: IndexPath) {
-        questionNum.text = "\(currentIndex + 1)/\(questionList.count)"
-        questionNum.font = UIFont(name: "Baloo 2", size: 18)
-    }
     
     func changeToNextQuestion(at indexPath: IndexPath) {
                 

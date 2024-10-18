@@ -9,13 +9,11 @@ import UIKit
 
 protocol AnswersCollectionViewCellDelegate: AnyObject {
     func changeToNextQuestion(at indexPath: IndexPath)
-    func correctAnswers(correct: Int)
 }
 
 class AnswersCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var collection: UICollectionView!
     private var question: Question?
-    private var correctNum = 0
     private var flag = false
     
     weak var delegate: AnswersCollectionViewCellDelegate?
@@ -87,7 +85,7 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
             if answer.correct {
                 myCell.answerLabel.backgroundColor = .correctSelection
                 myCell.answerLabel.textColor = .correctCellText
-                correctNum += 1
+                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "correctNum") + 1, forKey: "correctNum")
             }
             else {
                 myCell.answerLabel.backgroundColor = .wrongSelection
@@ -96,9 +94,7 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
             delegate?.changeToNextQuestion(at: indexPath)
-            delegate?.correctAnswers(correct: correctNum)
             flag = false
-            print(correctNum)
             myCell.answerLabel.backgroundColor = .white
             myCell.answerLabel.textColor = .black
         }

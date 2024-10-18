@@ -32,6 +32,7 @@
 		11A69AF42CB96B2A00BC14AB /* QuestionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11A69AF32CB96B2A00BC14AB /* QuestionHeaderView.xib */; };
 		11A69AF52CB96B2A00BC14AB /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A69AF22CB96B2A00BC14AB /* QuestionHeaderView.swift */; };
 		11A69AF82CB96D4D00BC14AB /* QuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A69AF72CB96D4D00BC14AB /* QuestionModels.swift */; };
+		11BA00B72CC2C54E001FB974 /* Baloo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11BA00B62CC2C54E001FB974 /* Baloo2-Bold.ttf */; };
 		11D0E1852CAB343A0033DAEA /* engravers-mt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */; };
 		11EF00B62CAFDAB500F14F84 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF00B52CAFDAB500F14F84 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
@@ -64,6 +65,7 @@
 		11A69AF22CB96B2A00BC14AB /* QuestionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionHeaderView.swift; sourceTree = "<group>"; };
 		11A69AF32CB96B2A00BC14AB /* QuestionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionHeaderView.xib; sourceTree = "<group>"; };
 		11A69AF72CB96D4D00BC14AB /* QuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModels.swift; sourceTree = "<group>"; };
+		11BA00B62CC2C54E001FB974 /* Baloo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-Bold.ttf"; sourceTree = "<group>"; };
 		11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "engravers-mt.ttf"; sourceTree = "<group>"; };
 		11EF00B52CAFDAB500F14F84 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -151,6 +153,7 @@
 				114840932CAB2A1F00282DC4 /* LaunchScreen.storyboard */,
 				11771E0F2CC18986007EBD98 /* Baloo2-Regular.ttf */,
 				1148409C2CAB2C4900282DC4 /* ELEPHNT.TTF */,
+				11BA00B62CC2C54E001FB974 /* Baloo2-Bold.ttf */,
 				11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */,
 				118069C42CAB3782002B761E /* Inter.ttc */,
 				119877062CAC57970040D8E9 /* RedHatDisplay-Regular.ttf */,
@@ -318,6 +321,7 @@
 				1126AD0A2CBBDBC9007EED7B /* QuestionListJson.json in Resources */,
 				116BEB2B2CBD3A3500266625 /* AnswersTitleCell.xib in Resources */,
 				11771E102CC18986007EBD98 /* Baloo2-Regular.ttf in Resources */,
+				11BA00B72CC2C54E001FB974 /* Baloo2-Bold.ttf in Resources */,
 				11A69AF42CB96B2A00BC14AB /* QuestionHeaderView.xib in Resources */,
 				114840902CAB2A1D00282DC4 /* Base in Resources */,
 				1148409D2CAB2C4900282DC4 /* ELEPHNT.TTF in Resources */,

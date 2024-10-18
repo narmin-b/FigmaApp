@@ -17,24 +17,39 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        bgView.backgroundColor = .bgColorr
-        UIBarButtonItem.appearance().tintColor = .white
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector (resetQuiz))  //UIBarButtonItem(title: "B", style: .plain, target: self, action: #selector(resetQuiz))
+        for familyName in UIFont.familyNames {
+            print("Family: \(familyName)")
+
+                    // Loop through all fonts for each family
+            let fontNames = UIFont.fontNames(forFamilyName: familyName)
+            for fontName in fontNames {
+                print("    Font: \(fontName)")
+            }
+        }
     }
     
     @objc fileprivate func resetQuiz() {
         navigationController?.popViewController(animated: true)
     }
     
+    fileprivate func navigationBarSet() {
+        UIBarButtonItem.appearance().tintColor = .white
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector (resetQuiz))
+    }
+    
     fileprivate func configureView() {
         configureHeader()
         configureLeaderboard()
         configureName()
+        navigationBarSet()
+        configureLeaderResult()
+        bgView.backgroundColor = .bgColorr
     }
     
     fileprivate func configureHeader() {
         headerLabel.text = "Leaderboard"
         headerLabel.font = UIFont(name: "Baloo 2", size: 22)
+        headerLabel.textColor = .white
     }
     
     fileprivate func configureLeaderboard() {
@@ -46,21 +61,18 @@ class ResultsViewController: UIViewController {
     fileprivate func configureName() {
         let name = UserDefaults.standard.string(forKey: "username") ?? "Guest"
         leaderName.text = name
-        leaderName.font = UIFont(name: "Baloo 2", size: 12)
+        leaderName.font = UIFont(name: "Baloo2-Bold", size: 12)
+        leaderName.textColor = .white
     }
     
     fileprivate func configureLeaderResult() {
-        
+        let num = UserDefaults.standard.integer(forKey: "correctNum")
+        leaderResult.text = "\(num)/4"
+        leaderResult.font = UIFont(name: "Baloo 2", size: 10)
+        leaderResult.textColor = .white
     }
+    
+    
 }
 
-extension ResultsViewController: AnswersCollectionViewCellDelegate {
-    func changeToNextQuestion(at indexPath: IndexPath) {
-        
-    }
-    
-    func correctAnswers(correct: Int) {
-        leaderResult.text = "\(correct)/4"
-    }
-    
-}
+
