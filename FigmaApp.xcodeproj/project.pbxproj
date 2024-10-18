@@ -33,6 +33,7 @@
 		11A69AF52CB96B2A00BC14AB /* QuestionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A69AF22CB96B2A00BC14AB /* QuestionHeaderView.swift */; };
 		11A69AF82CB96D4D00BC14AB /* QuestionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A69AF72CB96D4D00BC14AB /* QuestionModels.swift */; };
 		11BA00B72CC2C54E001FB974 /* Baloo2-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11BA00B62CC2C54E001FB974 /* Baloo2-Bold.ttf */; };
+		11BA00B92CC2F411001FB974 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11BA00B82CC2F411001FB974 /* ProfileViewController.swift */; };
 		11D0E1852CAB343A0033DAEA /* engravers-mt.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */; };
 		11EF00B62CAFDAB500F14F84 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11EF00B52CAFDAB500F14F84 /* UserInfo.swift */; };
 /* End PBXBuildFile section */
@@ -66,6 +67,7 @@
 		11A69AF32CB96B2A00BC14AB /* QuestionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionHeaderView.xib; sourceTree = "<group>"; };
 		11A69AF72CB96D4D00BC14AB /* QuestionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModels.swift; sourceTree = "<group>"; };
 		11BA00B62CC2C54E001FB974 /* Baloo2-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Baloo2-Bold.ttf"; sourceTree = "<group>"; };
+		11BA00B82CC2F411001FB974 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		11D0E1842CAB343A0033DAEA /* engravers-mt.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "engravers-mt.ttf"; sourceTree = "<group>"; };
 		11EF00B52CAFDAB500F14F84 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -212,6 +214,7 @@
 			children = (
 				11A69AE82CB94DF800BC14AB /* MainViewController.swift */,
 				11771E0B2CC18105007EBD98 /* ResultsViewController.swift */,
+				11BA00B82CC2F411001FB974 /* ProfileViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				114840892CAB2A1D00282DC4 /* AppDelegate.swift in Sources */,
 				11A69AF02CB96AD200BC14AB /* AnswersCollectionViewCell.swift in Sources */,
 				11A69AF82CB96D4D00BC14AB /* QuestionModels.swift in Sources */,
+				11BA00B92CC2F411001FB974 /* ProfileViewController.swift in Sources */,
 				11EF00B62CAFDAB500F14F84 /* UserInfo.swift in Sources */,
 				1148408B2CAB2A1D00282DC4 /* SceneDelegate.swift in Sources */,
 			);

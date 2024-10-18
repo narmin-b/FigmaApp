@@ -158,6 +158,11 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         navigationController?.popViewController(animated: true)
     }
     
+    fileprivate func saveUserToDefault(user: User) {
+        UserDefaults.standard.set(user.fullname ?? "", forKey: "name")
+        UserDefaults.standard.set(user.email ?? "", forKey: "email")
+
+    }
     
     fileprivate func signUpButtonClicked() {
         guard checkValidation() else {
@@ -167,7 +172,7 @@ class SecondViewController: UIViewController, UITextViewDelegate {
         guard let name = fullnameTextField.text, let password = passwordTextField.text, let mail = emailTextField.text else {return}
         user = User(fullname: name, email: mail, password: password)
         guard let user = user else {return}
-        UserDefaults.standard.set(user.fullname ?? "", forKey: "username")
+        saveUserToDefault(user: user)
         delegate?.didFinish(user: user)
         navigationController?.popViewController(animated: true)
     }

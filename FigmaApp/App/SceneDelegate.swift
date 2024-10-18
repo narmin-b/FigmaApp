@@ -64,7 +64,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let mainController = UIStoryboard.init(
             name: "Main",
             bundle: Bundle.main
-        ).instantiateViewController(withIdentifier: "MainViewController") as? MainViewController ?? MainViewController()
+        ).instantiateViewController(withIdentifier: "TabBarController") as? UITabBarController ?? UITabBarController()
         
         let navigationController = UINavigationController(rootViewController: mainController)
         let newWindow = UIWindow(windowScene: scene)

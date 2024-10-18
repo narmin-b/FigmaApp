@@ -17,15 +17,6 @@ class ResultsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        for familyName in UIFont.familyNames {
-            print("Family: \(familyName)")
-
-                    // Loop through all fonts for each family
-            let fontNames = UIFont.fontNames(forFamilyName: familyName)
-            for fontName in fontNames {
-                print("    Font: \(fontName)")
-            }
-        }
     }
     
     @objc fileprivate func resetQuiz() {
@@ -59,7 +50,7 @@ class ResultsViewController: UIViewController {
     }
 
     fileprivate func configureName() {
-        let name = UserDefaults.standard.string(forKey: "username") ?? "Guest"
+        let name = UserDefaults.standard.string(forKey: "name") ?? "Guest"
         leaderName.text = name
         leaderName.font = UIFont(name: "Baloo2-Bold", size: 12)
         leaderName.textColor = .white
