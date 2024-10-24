@@ -91,12 +91,12 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
                 myCell.answerLabel.backgroundColor = .wrongSelection
                 myCell.answerLabel.textColor = .wrongCellText
             }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-            delegate?.changeToNextQuestion(at: indexPath)
-            flag = false
-            myCell.answerLabel.backgroundColor = .white
-            myCell.answerLabel.textColor = .black
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+                delegate?.changeToNextQuestion(at: indexPath)
+                flag = false
+                myCell.answerLabel.backgroundColor = .white
+                myCell.answerLabel.textColor = .black
+            }
         }
     }
     

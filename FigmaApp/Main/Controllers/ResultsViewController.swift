@@ -52,14 +52,14 @@ class ResultsViewController: UIViewController {
     fileprivate func configureName() {
         let name = UserDefaults.standard.string(forKey: "name") ?? "Guest"
         leaderName.text = name
-        leaderName.font = UIFont(name: "Baloo2-Bold", size: 12)
+        leaderName.font = UIFont(name: "Baloo2-Bold", size: 20)
         leaderName.textColor = .white
     }
     
     fileprivate func configureLeaderResult() {
         let num = UserDefaults.standard.integer(forKey: "correctNum")
         leaderResult.text = "\(num)/4"
-        leaderResult.font = UIFont(name: "Baloo 2", size: 10)
+        leaderResult.font = UIFont(name: "Baloo 2", size: 16)
         leaderResult.textColor = .white
     }
     

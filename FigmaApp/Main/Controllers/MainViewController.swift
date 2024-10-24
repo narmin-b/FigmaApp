@@ -91,6 +91,7 @@ extension MainViewController: AnswersCollectionViewCellDelegate {
     func changeToNextQuestion(at indexPath: IndexPath) {
                 
         currentIndex += 1
+        
 
         if currentIndex < questionList.count {
             let nextIndexPath = IndexPath(item: currentIndex, section: 0)
