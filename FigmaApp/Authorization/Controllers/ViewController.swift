@@ -27,7 +27,7 @@ class ViewController: UIViewController {
     private func configureView() {
         let img = UIImageView(image: UIImage(named: "bg"))
         img.alpha = 0.3
-        img.contentMode = .scaleAspectFill  // Centers the image in the UIImageView
+        img.contentMode = .scaleAspectFill  
         img.translatesAutoresizingMaskIntoConstraints = false
 
         bgView.addSubview(img)
@@ -54,7 +54,6 @@ class ViewController: UIViewController {
     
     private func configureButton() {
         loginButton.backgroundColor = .authButton
-        //UIColor(red: 0.3882, green: 0.3686, blue: 0.3686, alpha: 1)
         loginButton.titleLabel!.font = UIFont(name: "Red Hat Display", size: 16)
         loginButton.setTitle("Get Started", for: .normal)
         loginButton.titleLabel?.textColor = .white

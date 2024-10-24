@@ -172,8 +172,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ulf-HH-7fZ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8vL-Uu-RhQ">
+                                <rect key="frame" x="24" y="103" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="Uv1-oW-qE7"/>
+                                    <constraint firstAttribute="height" constant="90" id="hef-iW-BpP"/>
+                                </constraints>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="vaF-ZP-ZfO">
-                                <rect key="frame" x="32.000000000000007" y="103" width="84.666666666666686" height="91"/>
+                                <rect key="frame" x="138" y="103" width="84.666666666666686" height="91"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1w-pa-nvZ">
                                         <rect key="frame" x="0.0" y="0.0" width="84.666666666666671" height="43"/>
@@ -189,11 +200,10 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0R-wI-Hr0">
-                                <rect key="frame" x="116.66666666666669" y="347" width="160" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0R-wI-Hr0">
+                                <rect key="frame" x="37" y="347" width="319" height="44"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="160" id="Dmu-tf-LTN"/>
-                                    <constraint firstAttribute="height" constant="50" id="EAG-FS-Qfu"/>
+                                    <constraint firstAttribute="height" constant="44" id="IlI-fu-e3H"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Log out"/>
@@ -205,22 +215,33 @@
                         <viewLayoutGuide key="safeArea" id="oOB-kp-Bnj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="vaF-ZP-ZfO" firstAttribute="leading" secondItem="oOB-kp-Bnj" secondAttribute="leading" constant="32" id="ivA-sE-8Vw"/>
+                            <constraint firstItem="i0R-wI-Hr0" firstAttribute="leading" secondItem="oOB-kp-Bnj" secondAttribute="leading" constant="37" id="0nt-DR-QCF"/>
+                            <constraint firstItem="oOB-kp-Bnj" firstAttribute="trailing" secondItem="ulf-HH-7fZ" secondAttribute="trailing" id="DjQ-P3-47r"/>
+                            <constraint firstItem="vaF-ZP-ZfO" firstAttribute="leading" secondItem="8vL-Uu-RhQ" secondAttribute="trailing" constant="24" id="MAI-Mp-wf4"/>
+                            <constraint firstAttribute="bottom" secondItem="ulf-HH-7fZ" secondAttribute="bottom" id="YWK-vg-j2W"/>
+                            <constraint firstItem="oOB-kp-Bnj" firstAttribute="trailing" secondItem="i0R-wI-Hr0" secondAttribute="trailing" constant="37" id="cDU-RI-7GL"/>
+                            <constraint firstItem="ulf-HH-7fZ" firstAttribute="leading" secondItem="oOB-kp-Bnj" secondAttribute="leading" id="h2x-mF-EXv"/>
+                            <constraint firstItem="ulf-HH-7fZ" firstAttribute="top" secondItem="oMI-pN-0hx" secondAttribute="top" id="mrx-jK-2Hk"/>
                             <constraint firstItem="i0R-wI-Hr0" firstAttribute="centerX" secondItem="oMI-pN-0hx" secondAttribute="centerX" id="oZT-Ag-Xwi"/>
                             <constraint firstItem="vaF-ZP-ZfO" firstAttribute="top" secondItem="oOB-kp-Bnj" secondAttribute="top" id="p2O-Hz-Tsz"/>
+                            <constraint firstItem="8vL-Uu-RhQ" firstAttribute="top" secondItem="oOB-kp-Bnj" secondAttribute="top" id="pXg-90-Kx5"/>
                             <constraint firstItem="i0R-wI-Hr0" firstAttribute="top" secondItem="oOB-kp-Bnj" secondAttribute="top" constant="244" id="wwF-U1-3cN"/>
+                            <constraint firstItem="8vL-Uu-RhQ" firstAttribute="leading" secondItem="oOB-kp-Bnj" secondAttribute="leading" constant="24" id="zG6-Zi-dSv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="person.fill" catalog="system" id="Owy-5D-eGD"/>
                     <navigationItem key="navigationItem" id="lHI-RY-ryX"/>
                     <connections>
+                        <outlet property="bgView" destination="ulf-HH-7fZ" id="St7-E8-KaZ"/>
                         <outlet property="emailLabel" destination="tzK-mj-Krl" id="nPk-cI-qNP"/>
+                        <outlet property="logoutButton" destination="i0R-wI-Hr0" id="qVB-O1-2JB"/>
                         <outlet property="nameLabel" destination="a1w-pa-nvZ" id="tOp-4G-P7I"/>
+                        <outlet property="profileImage" destination="8vL-Uu-RhQ" id="d63-zb-f66"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Uf3-TG-Z5Z" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2227" y="973"/>
+            <point key="canvasLocation" x="2226.7175572519081" y="972.53521126760563"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="jsO-8U-OXC">
