@@ -46,7 +46,7 @@ class ResultsViewController: UIViewController {
     fileprivate func configureLeaderboard() {
         leaderImage.image = UIImage(named: "person")
         leaderImage.layer.masksToBounds = true
-        leaderImage.layer.cornerRadius = leaderImage.frame.size.width / 2
+        leaderImage.layer.cornerRadius = leaderImage.layer.frame.height / 2
     }
 
     fileprivate func configureName() {
