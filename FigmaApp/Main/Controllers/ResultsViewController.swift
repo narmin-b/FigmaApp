@@ -21,6 +21,7 @@ class ResultsViewController: UIViewController {
     
     @objc fileprivate func resetQuiz() {
         navigationController?.popViewController(animated: true)
+        UserDefaults.standard.set(0, forKey: "correctNum")
     }
     
     fileprivate func navigationBarSet() {

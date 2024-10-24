@@ -12,6 +12,7 @@ protocol AnswersCollectionViewCellDelegate: AnyObject {
 }
 
 class AnswersCollectionViewCell: UICollectionViewCell {
+    
     @IBOutlet weak var collection: UICollectionView!
     private var question: Question?
     private var flag = false
@@ -41,6 +42,8 @@ class AnswersCollectionViewCell: UICollectionViewCell {
             self?.collection.reloadData()
         }
     }
+    
+    
 }
 
 extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -51,7 +54,8 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnswersTitleCell", for: indexPath) as! AnswersTitleCell
         guard let answer = question?.answer[indexPath.row] else {return UICollectionViewCell()}
-        cell.configureCell(model: answer)
+        cell.configureCell(model: answer, indexPath: indexPath)
+        cell.delegate = self
         return cell
     }
     
@@ -77,27 +81,62 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
         }
     }
         
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let answer = question?.answer[indexPath.row] else {return}
-        let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let answer = question?.answer[indexPath.row] else {return}
+//        let myCell = collection.cellForItem(at: indexPath) as! AnswersTitleCell
+//        if !flag {
+//            flag = true
+//            if answer.correct {
+//                myCell.answerButton.backgroundColor = .correctSelection
+////                myCell.answerButton.tintColor = .correctCellText
+////                myCell.answerButton.setAttributedTitle(NSAttributedString(string: myCell.answerButton.title(for: .normal) ?? "", attributes: [.foregroundColor: UIColor.correctCellText]), for: .normal)
+////                myCell.answerButton.setTitleColor(.correctCellText, for: .normal)
+//                myCell.answerButton.titleLabel?.textColor = .correctCellText
+//
+//                // Optionally update the attributed title if you want to use custom styles
+//                if let currentTitle = myCell.answerButton.title(for: .normal) {
+//                    let attributedTitle = NSAttributedString(string: currentTitle, attributes: [.foregroundColor: UIColor.correctCellText])
+//                    myCell.answerButton.setAttributedTitle(attributedTitle, for: .normal)
+//                }
+//                UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "correctNum") + 1, forKey: "correctNum")
+//            }
+//            else {
+//                myCell.answerButton.backgroundColor = .wrongSelection
+//                myCell.answerButton.tintColor = .wrongCellText
+//            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
+//                delegate?.changeToNextQuestion(at: indexPath)
+//                flag = false
+//                myCell.answerButton.backgroundColor = .white
+//                myCell.answerButton.tintColor = .black
+//            }
+//        }
+//    }
+    
+}
+
+extension AnswersCollectionViewCell: AnswersTitleCellDelegate {
+    func didSelectAnswer(_ answer: Answer, at indexPath: IndexPath) {
+        guard let myCell = collection.cellForItem(at: indexPath) as? AnswersTitleCell else { return }
+        
         if !flag {
             flag = true
+            myCell.answerButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
             if answer.correct {
-                myCell.answerLabel.backgroundColor = .correctSelection
-                myCell.answerLabel.textColor = .correctCellText
+                myCell.answerButton.backgroundColor = .correctSelection
+                myCell.answerButton.tintColor = .correctCellText
                 UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "correctNum") + 1, forKey: "correctNum")
+            } else {
+                myCell.answerButton.backgroundColor = .wrongSelection
+                myCell.answerButton.tintColor = .wrongCellText
             }
-            else {
-                myCell.answerLabel.backgroundColor = .wrongSelection
-                myCell.answerLabel.textColor = .wrongCellText
-            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
-                delegate?.changeToNextQuestion(at: indexPath)
-                flag = false
-                myCell.answerLabel.backgroundColor = .white
-                myCell.answerLabel.textColor = .black
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                self.delegate?.changeToNextQuestion(at: indexPath)
+                myCell.answerButton.backgroundColor = .white
+                myCell.answerButton.tintColor = .black
+                self.flag = false
             }
         }
     }
-    
 }
