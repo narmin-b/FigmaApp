@@ -116,13 +116,14 @@ extension AnswersCollectionViewCell: UICollectionViewDelegate, UICollectionViewD
 }
 
 extension AnswersCollectionViewCell: AnswersTitleCellDelegate {
-    func didSelectAnswer(_ answer: Answer, at indexPath: IndexPath) {
+    
+    func didSelectAnswer(_ answer: AnswersTitleCellProtocol, at indexPath: IndexPath) {
         guard let myCell = collection.cellForItem(at: indexPath) as? AnswersTitleCell else { return }
         
         if !flag {
             flag = true
             myCell.answerButton.setImage(UIImage(systemName: "checkmark.circle"), for: .normal)
-            if answer.correct {
+            if answer.correctBool {
                 myCell.answerButton.backgroundColor = .correctSelection
                 myCell.answerButton.tintColor = .correctCellText
                 UserDefaults.standard.set(UserDefaults.standard.integer(forKey: "correctNum") + 1, forKey: "correctNum")
@@ -135,7 +136,9 @@ extension AnswersCollectionViewCell: AnswersTitleCellDelegate {
                 self.delegate?.changeToNextQuestion(at: indexPath)
                 myCell.answerButton.backgroundColor = .white
                 myCell.answerButton.tintColor = .black
-                self.flag = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    self.flag = false
+                }
             }
         }
     }

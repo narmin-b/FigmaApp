@@ -16,3 +16,13 @@ struct Answer: Codable {
     let title: String
     let correct: Bool
 }
+
+extension Answer: AnswersTitleCellProtocol {
+    var correctBool: Bool {
+        correct
+    }
+    
+    var titleString: String {
+        title
+    }
+}

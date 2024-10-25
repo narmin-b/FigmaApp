@@ -8,24 +8,29 @@
 import UIKit
 
 protocol AnswersTitleCellDelegate: AnyObject {
-    func didSelectAnswer(_ answer: Answer, at indexPath: IndexPath)
+    func didSelectAnswer(_ answer: AnswersTitleCellProtocol, at indexPath: IndexPath)
+}
+
+protocol AnswersTitleCellProtocol {
+    var titleString: String {get}
+    var correctBool: Bool {get}
 }
 
 class AnswersTitleCell: UICollectionViewCell {
     @IBOutlet weak var answerButton: UIButton!
     var delegate: AnswersTitleCellDelegate?
-    private var answer: Answer?
+    private var answer: AnswersTitleCellProtocol?
     private var indexPath: IndexPath?
 
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func configureCell(model: Answer, indexPath: IndexPath) {
+    func configureCell(model: AnswersTitleCellProtocol, indexPath: IndexPath) {
         self.answer = model
         self.indexPath = indexPath
         answerButton.layer.masksToBounds = true
-        answerButton.setAttributedTitle(NSAttributedString(string: model.title, attributes: [.font: UIFont(name: "Baloo 2", size: 20) ?? UIFont()]), for: .normal)
+        answerButton.setAttributedTitle(NSAttributedString(string: model.titleString, attributes: [.font: UIFont(name: "Baloo 2", size: 20) ?? UIFont()]), for: .normal)
         answerButton.backgroundColor = .white
         answerButton.layer.cornerRadius = 20
         answerButton.tintColor = .black
@@ -42,6 +47,3 @@ class AnswersTitleCell: UICollectionViewCell {
         delegate?.didSelectAnswer(answer, at: indexPath) 
     }
 }
-
-
-    
